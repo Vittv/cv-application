@@ -1,0 +1,28 @@
+.sidebar {
+	padding: 2rem;
+	overflow-y: auto;
+	width: 30%;
+}
+
+.sidebar h2 {
+	text-align: left;
+	margin-bottom: 1rem;
+}
+
+form div {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+}
+
+form div label {
+	text-align: left;
+}
+
+form div input {
+	padding: 1rem;
+	width: 100%;
+	border-radius: 10px;
+	border: none;
+	font-size: 1.1rem;
+}
