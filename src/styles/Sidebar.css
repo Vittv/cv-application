@@ -1,12 +1,31 @@
 .sidebar {
-	padding: 2rem;
+	padding: 1.6rem;
+	padding-right: 1rem;
 	overflow-y: auto;
 	width: 30%;
+
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.sidebar::-webkit-scrollbar {
+	display: none;
 }
 
 .sidebar h2 {
 	text-align: left;
 	margin-bottom: 1rem;
+}
+
+.sidebar h3 {
+	text-align: left;
+	margin-bottom: 1rem;
+}
+
+.sidebar button {
+	width: 100%;
+	margin-bottom: 1rem;
+	background-color: var(--header-button-color);
 }
 
 form div {
@@ -17,6 +36,8 @@ form div {
 
 form div label {
 	text-align: left;
+	margin-bottom: 0.2rem;
+	filter: brightness(1.2);
 }
 
 form div input {
@@ -25,4 +46,60 @@ form div input {
 	border-radius: 10px;
 	border: none;
 	font-size: 1.1rem;
+	background-color: var(--header-background-color);
+	color: var(--header-color);
+}
+
+.educational-experience h2,
+.practical-experience h2 {
+	margin-top: 2rem;
+}
+
+.experience-item-form {
+	display: flex;
+	background-color: var(--header-background-color);
+	border: 2px solid var(--header-button-color);
+	flex-direction: column;
+	align-items: flex-start;
+	border-radius: 10px;
+	margin-bottom: 1rem;
+	padding: 1rem;
+}
+
+.experience-item-form input {
+	width: 100%;
+	padding: 0.4rem;
+	margin-top: 0.2rem;
+	background-color: var(--header-color);
+	border: none;
+	border-radius: 5px;
+	color: var(--title-background-color);
+	font-size: 1rem;
+}
+
+.experience-item-form button {
+	margin-top: 0.4rem;
+	margin-bottom: 0;
+	background-color: var(--main-background-color);
+	color: var(--header-color);
+	border: 2px solid var(--main-background-color);
+	filter: brightness(0.95);
+}
+
+.experience-item-form button:hover {
+	color: red;
+}
+
+textarea {
+	font-family:
+		system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	background-color: var(--header-background-color);
+	color: var(--header-color);
+	border: none;
+	overflow-y: auto;
+	resize: vertical;
+	border-radius: 10px;
+	width: 100%;
+	padding: 1rem;
 }

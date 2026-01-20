@@ -17,10 +17,10 @@ function PracticalExperience({ experiences, setExperiences }) {
     }));
   };
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    e.preventDefault();
     if (formData.companyName && formData.positionTitle) {
       setExperiences([...experiences, formData]);
-      // Clear the form
       setFormData({
         companyName: "",
         positionTitle: "",
@@ -35,24 +35,84 @@ function PracticalExperience({ experiences, setExperiences }) {
     setExperiences(experiences.filter((_, i) => i !== index));
   };
 
+  const handleExperienceChange = (index, field, value) => {
+    const updatedExperiences = experiences.map((exp, i) => {
+      if (i === index) {
+        return { ...exp, [field]: value };
+      }
+      return exp;
+    });
+    setExperiences(updatedExperiences);
+  };
+
   return (
     <div className="practical-experience">
       <h2>Practical Experience</h2>
 
       {experiences.map((exp, index) => (
-        <div key={index} className="experience-item">
-          <p>
-            <strong>{exp.positionTitle}</strong> at {exp.companyName}
-          </p>
-          <button onClick={() => handleDelete(index)} className="delete-btn">
-            Delete
+        <div key={index} className="experience-item-form">
+          <input
+            type="text"
+            name="companyName"
+            value={exp.companyName}
+            onChange={(e) =>
+              handleExperienceChange(index, "companyName", e.target.value)
+            }
+            placeholder="Company Name"
+          />
+          <input
+            type="text"
+            name="positionTitle"
+            value={exp.positionTitle}
+            onChange={(e) =>
+              handleExperienceChange(index, "positionTitle", e.target.value)
+            }
+            placeholder="Position Title"
+          />
+          <textarea
+            name="mainResponsibilities"
+            value={exp.mainResponsibilities}
+            onChange={(e) =>
+              handleExperienceChange(
+                index,
+                "mainResponsibilities",
+                e.target.value,
+              )
+            }
+            rows="4"
+            placeholder="Main Responsibilities"
+          />
+          <input
+            type="text"
+            name="dateFrom"
+            value={exp.dateFrom}
+            onChange={(e) =>
+              handleExperienceChange(index, "dateFrom", e.target.value)
+            }
+            placeholder="Date From (e.g., Jan 2020)"
+          />
+          <input
+            type="text"
+            name="dateUntil"
+            value={exp.dateUntil}
+            onChange={(e) =>
+              handleExperienceChange(index, "dateUntil", e.target.value)
+            }
+            placeholder="Date Until (e.g., Dec 2022 or Present)"
+          />
+          <button
+            type="button"
+            onClick={() => handleDelete(index)}
+            className="delete-btn"
+          >
+            -
           </button>
         </div>
       ))}
 
       <form>
         <div>
-          <label htmlFor="companyName">Company Name:</label>
+          <label htmlFor="companyName">Company Name</label>
           <input
             type="text"
             id="companyName"
@@ -61,9 +121,8 @@ function PracticalExperience({ experiences, setExperiences }) {
             onChange={handleChange}
           />
         </div>
-
         <div>
-          <label htmlFor="positionTitle">Position Title:</label>
+          <label htmlFor="positionTitle">Position Title</label>
           <input
             type="text"
             id="positionTitle"
@@ -72,9 +131,8 @@ function PracticalExperience({ experiences, setExperiences }) {
             onChange={handleChange}
           />
         </div>
-
         <div>
-          <label htmlFor="mainResponsibilities">Main Responsibilities:</label>
+          <label htmlFor="mainResponsibilities">Main Responsibilities</label>
           <textarea
             id="mainResponsibilities"
             name="mainResponsibilities"
@@ -83,9 +141,8 @@ function PracticalExperience({ experiences, setExperiences }) {
             rows="4"
           />
         </div>
-
         <div>
-          <label htmlFor="dateFrom">Date From:</label>
+          <label htmlFor="dateFrom">Date From</label>
           <input
             type="text"
             id="dateFrom"
@@ -95,9 +152,8 @@ function PracticalExperience({ experiences, setExperiences }) {
             placeholder="e.g., Jan 2020"
           />
         </div>
-
         <div>
-          <label htmlFor="dateUntil">Date Until:</label>
+          <label htmlFor="dateUntil">Date Until</label>
           <input
             type="text"
             id="dateUntil"
@@ -107,9 +163,8 @@ function PracticalExperience({ experiences, setExperiences }) {
             placeholder="e.g., Dec 2022 or Present"
           />
         </div>
-
-        <button type="button" onClick={handleAdd} className="add-btn">
-          Add Experience
+        <button type="submit" onClick={handleAdd} className="add-btn">
+          +
         </button>
       </form>
     </div>

@@ -15,7 +15,8 @@ function EducationalExperience({ experiences, setExperiences }) {
     }));
   };
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    e.preventDefault();
     if (formData.schoolName && formData.titleOfStudy) {
       setExperiences([...experiences, formData]);
       setFormData({
@@ -30,24 +31,62 @@ function EducationalExperience({ experiences, setExperiences }) {
     setExperiences(experiences.filter((_, i) => i !== index));
   };
 
+  const handleExperienceChange = (index, field, value) => {
+    const updatedExperiences = experiences.map((exp, i) => {
+      if (i === index) {
+        return { ...exp, [field]: value };
+      }
+      return exp;
+    });
+    setExperiences(updatedExperiences);
+  };
+
   return (
     <div className="educational-experience">
       <h2>Educational Experience</h2>
 
       {experiences.map((exp, index) => (
-        <div key={index} className="experience-item">
-          <p>
-            <strong>{exp.schoolName}</strong> - {exp.titleOfStudy}
-          </p>
-          <button onClick={() => handleDelete(index)} className="delete-btn">
-            Delete
+        <div key={index} className="experience-item-form">
+          <input
+            type="text"
+            name="schoolName"
+            value={exp.schoolName}
+            onChange={(e) =>
+              handleExperienceChange(index, "schoolName", e.target.value)
+            }
+            placeholder="School Name"
+          />
+          <input
+            type="text"
+            name="titleOfStudy"
+            value={exp.titleOfStudy}
+            onChange={(e) =>
+              handleExperienceChange(index, "titleOfStudy", e.target.value)
+            }
+            placeholder="Title of Study"
+          />
+          <input
+            type="text"
+            name="dateOfStudy"
+            value={exp.dateOfStudy}
+            onChange={(e) =>
+              handleExperienceChange(index, "dateOfStudy", e.target.value)
+            }
+            placeholder="Date of Study (e.g., 2018-2022)"
+          />
+          <button
+            type="button"
+            onClick={() => handleDelete(index)}
+            className="delete-btn"
+          >
+            -
           </button>
         </div>
       ))}
 
       <form>
         <div>
-          <label htmlFor="schoolName">School Name:</label>
+          <label htmlFor="schoolName">School Name</label>
           <input
             type="text"
             id="schoolName"
@@ -56,9 +95,8 @@ function EducationalExperience({ experiences, setExperiences }) {
             onChange={handleChange}
           />
         </div>
-
         <div>
-          <label htmlFor="titleOfStudy">Title of Study:</label>
+          <label htmlFor="titleOfStudy">Title of Study</label>
           <input
             type="text"
             id="titleOfStudy"
@@ -67,9 +105,8 @@ function EducationalExperience({ experiences, setExperiences }) {
             onChange={handleChange}
           />
         </div>
-
         <div>
-          <label htmlFor="dateOfStudy">Date of Study:</label>
+          <label htmlFor="dateOfStudy">Date of Study</label>
           <input
             type="text"
             id="dateOfStudy"
@@ -79,9 +116,8 @@ function EducationalExperience({ experiences, setExperiences }) {
             placeholder="e.g., 2018-2022"
           />
         </div>
-
-        <button type="button" onClick={handleAdd} className="add-btn">
-          Add Education
+        <button type="submit" onClick={handleAdd} className="add-btn">
+          +
         </button>
       </form>
     </div>
