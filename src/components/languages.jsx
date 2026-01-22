@@ -101,7 +101,7 @@ function Languages({ languages, setLanguages }) {
           />
         </div>
         <button type="submit" onClick={handleAdd} className="add-btn">
-          +
+          Add Language
         </button>
       </form>
     </div>

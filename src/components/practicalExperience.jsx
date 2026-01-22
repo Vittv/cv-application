@@ -169,7 +169,7 @@ function PracticalExperience({ experiences, setExperiences }) {
           />
         </div>
         <button type="submit" onClick={handleAdd} className="add-btn">
-          +
+          Add Experience
         </button>
       </form>
     </div>

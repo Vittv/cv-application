@@ -101,7 +101,7 @@ function Projects({ projects, setProjects }) {
           />
         </div>
         <button type="submit" className="add-btn">
-          +
+          Add Project
         </button>
       </form>
     </div>

@@ -122,7 +122,7 @@ function EducationalExperience({ experiences, setExperiences }) {
           />
         </div>
         <button type="submit" onClick={handleAdd} className="add-btn">
-          +
+          Add Education
         </button>
       </form>
     </div>

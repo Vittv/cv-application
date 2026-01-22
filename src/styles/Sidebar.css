@@ -5,6 +5,7 @@
 
 	scrollbar-width: none;
 	-ms-overflow-style: none;
+	background-color: var(--main-background-color);
 }
 
 .sidebar::-webkit-scrollbar {
@@ -24,7 +25,11 @@
 .sidebar button {
 	width: 100%;
 	margin-bottom: 1rem;
-	background-color: var(--header-button-color);
+	background-color: #f3ede2;
+	/* border: 2px solid var(--header-color); */
+	color: var(--header-button-color);
+	padding: 0.8rem;
+	font-size: 1rem;
 }
 
 form div {

@@ -21,6 +21,7 @@ function App() {
   const [skills, setSkills] = useState([]);
   const [projects, setProjects] = useState([]);
   const [languages, setLanguages] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const formatUrlForDisplay = (url) => {
     return url.replace(/^https?:\/\//, "");
@@ -28,7 +29,29 @@ function App() {
 
   return (
     <div className="App">
-      <div className="sidebar">
+      <button
+        className="sidebar-toggle"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        aria-label="Toggle sidebar"
+      >
+        ☰
+      </button>
+
+      {sidebarOpen && (
+        <div
+          className="sidebar-overlay"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      <button
+        className="print-button"
+        aria-label="Print Document"
+        onClick={() => window.print()}
+      >
+        Print
+      </button>
+      <div className={`sidebar ${sidebarOpen ? "sidebar-open" : ""}`}>
         <PersonalInfo
           data={personalInfo}
           setData={setPersonalInfo}
@@ -56,6 +79,7 @@ function App() {
                 <h1>{personalInfo.name || "Your Name"}</h1>
                 <p>{personalInfo.email || "email@example.com"}</p>
                 <p>{personalInfo.phone || "(123) 456-7890"}</p>
+                <p>{personalInfo.location || "London, UK"}</p>
                 {personalLinks.length > 0 ? (
                   <div style={{ marginTop: "0.5rem" }}>
                     {personalLinks.map((link, index) => (
@@ -145,7 +169,6 @@ function App() {
                             style={{
                               display: "block",
                               textDecoration: "none",
-                              color: "blue",
                             }}
                             target="_blank"
                             rel="noopener noreferrer"

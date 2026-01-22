@@ -16,13 +16,14 @@
 }
 
 .cv-document {
+	size: A4;
 	font-family: monospace;
 	font-size: 0.9rem;
 	width: 210mm;
 	margin: 0;
 	height: 297mm;
 	padding: 2rem;
-	border-radius: 10px;
+	/* border-radius: 10px; */
 	background-color: #e8dcc8;
 	color: #2c3e50;
 	overflow: hidden;
@@ -77,4 +78,11 @@
 
 .cv-section ul a {
 	margin-bottom: 1rem;
+}
+
+@media (max-width: 1000px) {
+	.preview {
+		width: 100%;
+		padding: 1rem;
+	}
 }

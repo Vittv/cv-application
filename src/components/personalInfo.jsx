@@ -85,9 +85,20 @@ function PersonalInfo({ data, setData, links, setLinks }) {
             onChange={handleChange}
           />
         </div>
+        <div>
+          <label htmlFor="location">Location</label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            placeholder="City, Country (US)"
+            value={data.location}
+            onChange={handleChange}
+          />
+        </div>
       </form>
 
-      <h3>Links</h3>
+      <h3 style={{ marginTop: "2rem" }}>Links</h3>
 
       {links.map((link, index) => (
         <div key={index} className="experience-item-form">
@@ -140,7 +151,7 @@ function PersonalInfo({ data, setData, links, setLinks }) {
           />
         </div>
         <button type="submit" className="add-btn">
-          +
+          Add Link
         </button>
       </form>
     </div>

@@ -79,7 +79,7 @@ function Skills({ skills, setSkills }) {
           />
         </div>
         <button type="submit" onClick={handleAdd} className="add-btn">
-          +
+          Add Skill
         </button>
       </form>
     </div>
