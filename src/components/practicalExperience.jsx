@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function PracticalExperience({ experiences, setExperiences }) {
   const [formData, setFormData] = useState({
@@ -8,6 +8,8 @@ function PracticalExperience({ experiences, setExperiences }) {
     dateFrom: "",
     dateUntil: "",
   });
+
+  const inputRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,6 +30,8 @@ function PracticalExperience({ experiences, setExperiences }) {
         dateFrom: "",
         dateUntil: "",
       });
+      // Focus back to input after adding
+      setTimeout(() => inputRef.current?.focus(), 0);
     }
   };
 
@@ -114,6 +118,7 @@ function PracticalExperience({ experiences, setExperiences }) {
         <div>
           <label htmlFor="companyName">Company Name</label>
           <input
+            ref={inputRef}
             type="text"
             id="companyName"
             name="companyName"

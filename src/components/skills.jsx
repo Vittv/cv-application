@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function Skills({ skills, setSkills }) {
   const [formData, setFormData] = useState({
     skillName: "",
   });
+
+  const inputRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +22,8 @@ function Skills({ skills, setSkills }) {
       setFormData({
         skillName: "",
       });
+      // Focus back to input after adding
+      setTimeout(() => inputRef.current?.focus(), 0);
     }
   };
 
@@ -38,7 +42,7 @@ function Skills({ skills, setSkills }) {
   };
 
   return (
-    <div className="skills">
+    <div style={{ marginBottom: "2rem" }} className="skills">
       <h2>Skills</h2>
 
       {skills.map((skill, index) => (
@@ -66,6 +70,7 @@ function Skills({ skills, setSkills }) {
         <div>
           <label htmlFor="skillName">Skill</label>
           <input
+            ref={inputRef}
             type="text"
             id="skillName"
             name="skillName"

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function PersonalInfo({ data, setData, links, setLinks }) {
   const [linkData, setLinkData] = useState({
     label: "",
     url: "",
   });
+
+  const inputRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,6 +32,8 @@ function PersonalInfo({ data, setData, links, setLinks }) {
         label: "",
         url: "",
       });
+      // Focus back to input after adding
+      setTimeout(() => inputRef.current?.focus(), 0);
     }
   };
 
@@ -48,7 +52,7 @@ function PersonalInfo({ data, setData, links, setLinks }) {
   };
 
   return (
-    <div className="personal-info">
+    <div style={{ marginBottom: "2rem" }} className="personal-info">
       <h2>Personal Information</h2>
       <form>
         <div>
@@ -115,6 +119,7 @@ function PersonalInfo({ data, setData, links, setLinks }) {
         <div>
           <label htmlFor="label">Label</label>
           <input
+            ref={inputRef}
             type="text"
             id="label"
             name="label"

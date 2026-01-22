@@ -1,8 +1,7 @@
 .sidebar {
 	padding: 1.6rem;
-	padding-right: 1rem;
 	overflow-y: auto;
-	width: 30%;
+	width: 30rem;
 
 	scrollbar-width: none;
 	-ms-overflow-style: none;
@@ -88,6 +87,10 @@ form div input {
 
 .experience-item-form button:hover {
 	color: red;
+}
+
+.experience-item-form textarea {
+	margin: 0.4rem 0;
 }
 
 textarea {

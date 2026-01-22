@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function Languages({ languages, setLanguages }) {
   const [formData, setFormData] = useState({
     languageName: "",
     proficiency: "",
   });
+
+  const inputRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +24,8 @@ function Languages({ languages, setLanguages }) {
         languageName: "",
         proficiency: "",
       });
+      // Focus back to input after adding
+      setTimeout(() => inputRef.current?.focus(), 0);
     }
   };
 
@@ -77,6 +81,7 @@ function Languages({ languages, setLanguages }) {
         <div>
           <label htmlFor="languageName">Language</label>
           <input
+            ref={inputRef}
             type="text"
             id="languageName"
             name="languageName"
