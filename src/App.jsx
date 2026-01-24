@@ -27,6 +27,34 @@ function App() {
     return url.replace(/^https?:\/\//, "");
   };
 
+  const formatResponsibilities = (text) => {
+    const lines = text.split("\n").filter((line) => line.trim());
+    const hasListItems = lines.some((line) => line.trim().startsWith("-"));
+
+    if (hasListItems) {
+      return (
+        <ul style={{ marginTop: "0.4rem" }}>
+          {lines.map((line, i) => {
+            const trimmedLine = line.trim();
+            if (trimmedLine.startsWith("-")) {
+              return (
+                <li style={{ marginTop: "0.4rem" }} key={i}>
+                  {trimmedLine.substring(1).trim()}
+                </li>
+              );
+            } else if (trimmedLine) {
+              return <li key={i}>{trimmedLine}</li>;
+            }
+            return null;
+          })}
+        </ul>
+      );
+    }
+
+    // return <p style={{ whiteSpace: "pre-wrap", marginTop: "0.4rem" }}>{text}</p>;
+    return <div>{text}</div>;
+  };
+
   return (
     <div className="App">
       <button
@@ -202,7 +230,7 @@ function App() {
                       https://github.com/Vittv/todo-list
                     </a>
                     <li style={{ marginTop: "1rem" }}>
-                      <strong>CV Builder Application</strong>
+                      <strong>CV Builder (we are here)</strong>
                     </li>
                     <a
                       href="https://github.com/Vittv/cv-application"
@@ -264,7 +292,7 @@ function App() {
                   educationalExperiences.map((exp, index) => (
                     <div key={index} style={{ marginBottom: "1rem" }}>
                       <p>
-                        <strong>{exp.titleOfStudy}</strong>
+                        <h4>{exp.titleOfStudy}</h4>
                       </p>
                       <p style={{ fontWeight: 500 }}>{exp.schoolName}</p>
                       <p>{exp.dateOfStudy}</p>
@@ -298,7 +326,7 @@ function App() {
                   practicalExperiences.map((exp, index) => (
                     <div key={index} style={{ marginBottom: "2rem" }}>
                       <p>
-                        <strong>{exp.positionTitle}</strong>
+                        <h4>{exp.positionTitle}</h4>
                       </p>
                       <p style={{ fontWeight: 500 }}>
                         {exp.companyName} ({exp.dateFrom} - {exp.dateUntil})
@@ -306,7 +334,7 @@ function App() {
                       <p
                         style={{ whiteSpace: "pre-wrap", marginTop: "0.4rem" }}
                       >
-                        {exp.mainResponsibilities}
+                        {formatResponsibilities(exp.mainResponsibilities)}
                       </p>
                     </div>
                   ))
@@ -314,42 +342,54 @@ function App() {
                   <div>
                     <div style={{ marginBottom: "2rem" }}>
                       <p>
-                        <strong>Senior Frontend Developer</strong>
+                        <h4>Senior Frontend Developer</h4>
                       </p>
                       <p style={{ fontWeight: 500 }}>
                         Tech Solutions Inc. (Jan 2023 - Present)
                       </p>
-                      <p
-                        style={{ whiteSpace: "pre-wrap", marginTop: "0.4rem" }}
-                      >{`- Led development of customer-facing web applications using React and TypeScript
-- Implemented responsive designs and improved accessibility compliance by 95%
-- Mentored team of 4 junior developers and conducted code reviews`}</p>
+                      {formatResponsibilities(
+                        `- Led development of customer-facing web applications using React and TypeScript `,
+                      )}
+                      {formatResponsibilities(
+                        `- Implemented responsive designs and improved accessibility compliance by 95%`,
+                      )}
+                      {formatResponsibilities(
+                        `- Mentored team of 4 junior developers and conducted code reviews`,
+                      )}
                     </div>
                     <div style={{ marginBottom: "2rem" }}>
                       <p>
-                        <strong>Frontend Developer</strong>
+                        <h4>Frontend Developer</h4>
                       </p>
                       <p style={{ fontWeight: 500 }}>
                         Digital Agency LLC (Jun 2021 - Dec 2022)
                       </p>
-                      <p
-                        style={{ whiteSpace: "pre-wrap", marginTop: "0.4rem" }}
-                      >{`- Developed and maintained multiple client websites using React and Vue.js
-- Collaborated with designers to implement pixel-perfect UI components
-- Integrated REST APIs and managed state with Redux`}</p>
+                      {formatResponsibilities(
+                        `- Developed and maintained multiple client websites using React and Vue.js`,
+                      )}
+                      {formatResponsibilities(
+                        `- Collaborated with designers to implement pixel-perfect UI components`,
+                      )}
+                      {formatResponsibilities(
+                        `- Integrated REST APIs and managed state with Redux`,
+                      )}
                     </div>
                     <div style={{ marginBottom: "2rem" }}>
                       <p>
-                        <strong>Junior Web Developer</strong>
+                        <h4>Junior Web Developer</h4>
                       </p>
                       <p style={{ fontWeight: 500 }}>
                         StartUp Co. (Jan 2020 - May 2021)
                       </p>
-                      <p
-                        style={{ whiteSpace: "pre-wrap", marginTop: "0.4rem" }}
-                      >{`- Built responsive landing pages and marketing websites
-- Fixed bugs and implemented new features based on user feedback
-- Worked with version control using Git and GitHub`}</p>
+                      {formatResponsibilities(
+                        `- Built responsive landing pages and marketing websites`,
+                      )}
+                      {formatResponsibilities(
+                        `- Fixed bugs and implemented new features based on user feedback`,
+                      )}
+                      {formatResponsibilities(
+                        `- Worked with version control using Git and GitHub`,
+                      )}
                     </div>
                   </div>
                 )}

@@ -144,6 +144,9 @@ function PracticalExperience({ experiences, setExperiences }) {
             value={formData.mainResponsibilities}
             onChange={handleChange}
             rows="4"
+            placeholder={`(Use "-" to add bullet points)
+- Led development of web applications
+- Built responsive landing pages and marketing websites`}
           />
         </div>
         <div>

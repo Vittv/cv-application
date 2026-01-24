@@ -175,3 +175,68 @@
 		border-radius: 0;
 	}
 }
+
+@media (max-width: 1000px) {
+	.sidebar-toggle {
+		display: block;
+		position: fixed;
+		top: 1rem;
+		left: 1rem;
+		z-index: 1001;
+		background-color: var(--header-button-color);
+		color: var(--main-background-color);
+		font-size: 1.5rem;
+		padding: 0.5rem 1rem;
+		border-radius: 10px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+		cursor: pointer;
+	}
+
+	.sidebar {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 80%;
+		max-width: 400px;
+		height: 100vh;
+		z-index: 1000;
+		box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+		background-color: var(--main-background-color);
+	}
+
+	.sidebar.sidebar-open {
+		display: block;
+		width: 85%;
+	}
+
+	.sidebar-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 999;
+	}
+}
+
+@media (max-width: 600px) {
+	.App {
+		height: auto;
+		overflow-y: auto;
+	}
+
+	.preview {
+		overflow-y: auto;
+		height: auto;
+		padding: 0.5rem;
+	}
+
+	.cv-document {
+		height: auto;
+		min-height: auto;
+		font-size: 0.75rem;
+		padding: 1rem;
+	}
+}
